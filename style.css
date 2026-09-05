@@ -1,0 +1,519 @@
+/* ==========================================================================
+   Design tokens
+   Palette: deep ink navy + warm parchment paper + ocean teal + mustard ochre.
+   Type: Fraunces (display serif, travel-poster character) + Inter (body/UI).
+   Layout motif: package listings read as ticket stubs (dashed perforation +
+   notch cut-outs), since this is a booking system, not a generic card grid.
+   ========================================================================== */
+
+:root {
+  --ink: #16324F;
+  --ink-light: #4A5D73;
+  --paper: #EFE6D0;
+  --card: #FBF7EC;
+  --teal: #2F7A6E;
+  --teal-dark: #204E46;
+  --ochre: #C98A2C;
+  --border: rgba(22, 50, 79, 0.16);
+  --danger: #A6403A;
+
+  --font-display: "Fraunces", serif;
+  --font-body: "Inter", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  margin: 0 0 0.4em;
+  font-weight: 600;
+}
+
+p {
+  margin: 0 0 1em;
+  max-width: 62ch;
+}
+
+.hidden {
+  display: none !important;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------------- Header ---------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.wordmark span {
+  color: var(--teal);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.main-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.main-nav a:hover {
+  color: var(--teal);
+}
+
+.session-badge {
+  font-size: 0.9rem;
+  color: var(--ink-light);
+}
+
+.btn {
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--teal);
+  color: var(--card);
+}
+
+.btn-primary:hover {
+  background: var(--teal-dark);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+}
+
+.btn-outline:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--danger);
+  border: 1.5px solid var(--danger);
+  padding: 6px 14px;
+  font-size: 0.85rem;
+}
+
+.btn-small {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+}
+
+/* ---------------- Hero ---------------- */
+
+.hero {
+  padding: 72px 0 56px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  line-height: 1.1;
+  max-width: 14ch;
+}
+
+.hero .lede {
+  color: var(--ink-light);
+  font-size: 1.05rem;
+}
+
+.hero-figure svg {
+  width: 100%;
+  height: auto;
+}
+
+/* ---------------- Section headings ---------------- */
+
+.section {
+  padding: 56px 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+}
+
+.section-heading h2 {
+  font-size: 1.8rem;
+}
+
+.section-heading .meta {
+  color: var(--ink-light);
+  font-size: 0.95rem;
+}
+
+/* ---------------- Ticket-stub package cards ---------------- */
+
+.package-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.ticket {
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ticket-info {
+  padding: 22px 24px;
+}
+
+.ticket-info h3 {
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+}
+
+.ticket-info .duration {
+  color: var(--ink-light);
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.ticket-info .desc {
+  font-size: 0.92rem;
+  color: var(--ink-light);
+  margin-bottom: 0;
+}
+
+.ticket-stub {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 12px;
+  border-left: 2px dashed var(--border);
+  text-align: center;
+}
+
+.ticket-stub::before,
+.ticket-stub::after {
+  content: "";
+  position: absolute;
+  left: -8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1px solid var(--border);
+}
+
+.ticket-stub::before {
+  top: -8px;
+}
+
+.ticket-stub::after {
+  bottom: -8px;
+}
+
+.ticket-stub .price {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ochre);
+}
+
+.ticket-stub .price small {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.7rem;
+  color: var(--ink-light);
+}
+
+.ticket-stub .seats {
+  font-size: 0.78rem;
+  color: var(--ink-light);
+}
+
+/* ---------------- Auth panels ---------------- */
+
+.auth-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.auth-tab {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  color: var(--ink-light);
+}
+
+.auth-tab.active {
+  background: var(--ink);
+  color: var(--card);
+  border-color: var(--ink);
+}
+
+.auth-panels {
+  max-width: 420px;
+}
+
+.form-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.form-grid label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.88rem;
+  color: var(--ink-light);
+}
+
+.form-grid input {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--card);
+  color: var(--ink);
+}
+
+.form-grid input:focus,
+.auth-tab:focus,
+.btn:focus {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.form-note {
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  margin-top: 12px;
+}
+
+.form-error {
+  color: var(--danger);
+  font-size: 0.88rem;
+  min-height: 1.2em;
+}
+
+.form-success {
+  color: var(--teal-dark);
+  font-size: 0.88rem;
+  min-height: 1.2em;
+}
+
+/* ---------------- Dashboards / tables ---------------- */
+
+.profile-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.profile-card .form-grid {
+  max-width: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+th {
+  color: var(--ink-light);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+.status-pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-confirmed {
+  background: rgba(47, 122, 110, 0.15);
+  color: var(--teal-dark);
+}
+
+.status-cancelled {
+  background: rgba(166, 64, 58, 0.15);
+  color: var(--danger);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin-bottom: 32px;
+}
+
+.admin-add-form {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.admin-add-form .form-grid {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: none;
+}
+
+.admin-add-form label.full {
+  grid-column: 1 / -1;
+}
+
+.empty-state {
+  color: var(--ink-light);
+  font-style: italic;
+  padding: 16px 0;
+}
+
+/* ---------------- Footer ---------------- */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 0;
+  color: var(--ink-light);
+  font-size: 0.85rem;
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 760px) {
+  .hero .container {
+    grid-template-columns: 1fr;
+  }
+  .package-grid {
+    grid-template-columns: 1fr;
+  }
+  .ticket {
+    grid-template-columns: 1fr;
+  }
+  .ticket-stub {
+    border-left: none;
+    border-top: 2px dashed var(--border);
+  }
+  .ticket-stub::before,
+  .ticket-stub::after {
+    left: 50%;
+    top: -8px;
+    transform: translateX(-50%);
+  }
+  .ticket-stub::after {
+    bottom: -8px;
+    top: auto;
+  }
+  .profile-card,
+  .admin-add-form .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .main-nav {
+    gap: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .btn {
+    transition: none;
+  }
+}
